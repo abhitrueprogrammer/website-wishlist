@@ -1,0 +1,38 @@
+
+{% extends "template.html" %}
+{% block title %}
+    Watch Wishlist
+{% endblock %}
+{% block body %}
+<!-- Make table instead of an ul -->
+<ul class="list-group">
+    
+    <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th scope="col">reference_no</th>
+            <th scope="col">watchname</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for watch in watches %}
+        <tr>
+            <th scope="row">{{watch[2]}}</th>
+            <td>{{watch[1]}}</td>
+        <form method="post">
+            <!-- always only things inside form is submitted, code in ```if method == POST``` is executed and then back -->
+            <!-- make a blog about this method -->
+            <td><input class="btn btn-primary" type="submit" name="type" value="info"></td>
+            <input type="hidden" name = "watchid" value="{{watch[0]}}">
+            <!-- submit one to cart and other to display one  -->
+        </form>
+        <form method="post", action="/addCart">
+            <td><input class="btn btn-secondary" type="submit" name ="type" value="cart"></td>  
+            <input type="hidden" name = "watchid" value="{{watch[0]}}">
+        </form>
+    </tr>
+    {% endfor %}
+</ul>
+{% endblock %}

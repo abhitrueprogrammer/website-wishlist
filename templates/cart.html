@@ -1,0 +1,25 @@
+{% extends "template.html" %}
+{% block title %}
+    cart
+{% endblock %}
+{% block body %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Watch Name</th>
+      <th scope="col"></th> <!-- Image -->
+      <th scope="col"></th> <!--remove  -->
+    </tr>
+  </thead>
+  <tbody>
+    {% for items in basket %}
+    <tr>
+      <th scope="row">1</th>
+      <!-- watches.watchname, watches.image_url -->
+      <td>{{items[0]}}</td>
+      <td><img src="{{items[1]}}" alt="{{items[0]}}"></td>
+      <td></td>
+    </tr>
+    {% endfor %}
+{% endblock %}
